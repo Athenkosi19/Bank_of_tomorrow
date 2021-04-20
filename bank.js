@@ -35,6 +35,7 @@ let getAccount = function (accountNumb) {
         }
         counter = counter + 1
     }
+    return 'Account number not found'
 };
 
 let printstatement = function (accountNumb) {
@@ -42,7 +43,7 @@ let printstatement = function (accountNumb) {
     if (account) {
         let counter = 0
         while (counter < account.transactions.length) {
-            console.log(account.transactions[counter].type + '|' + account.transactions[counter].amount)
+            console.log(account.transactions[counter].type + '|' + account.transactions[counter].amount.toFixed(2))
             counter = counter + 1
         }
     }
@@ -53,18 +54,18 @@ let withdraw = function (accountNumb, amount) {
     if (account && amount > 0 && amount <= account.balance) {
         account.balance = account.balance - amount;
         account.transactions.push({ type: 'withdrawal', amount: amount * - 1 });
-        return true
+        return 'successful'
     }
-    return false
+    return 'insufficient amount'
 };
 let deposit = function (accountNumb, amount) {
     let account = getAccount(accountNumb)
     if (account && amount > 0) {
         account.balance = account.balance + amount;
         account.transactions.push({ type: 'deposit', amount });
-        return true
+        return 'successful'
     }
-    return false
+    return 'insufficient amount'
 };
 let transfer = function (fromAccount, toAccount, amount) {
     let primeAccount = getAccount(fromAccount)
@@ -74,9 +75,9 @@ let transfer = function (fromAccount, toAccount, amount) {
             secAccount.balance = secAccount.balance + amount;
         primeAccount.transactions.push({ type: 'transfer', amount: amount * -1 });
         secAccount.transactions.push({ type: 'transfer', amount });
-        return true
+        return 'successful'
     }
-    return false
+    return 'insuficient amount'
 };
 
 //CLIENT
