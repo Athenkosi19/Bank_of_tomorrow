@@ -82,7 +82,7 @@ let transfer = function (fromAccount, toAccount, amount) {
 //CLIENT
 
 //console.log(withdraw('333333333', 10))
-console.log(withdraw('222222222', 700))
+console.log(withdraw('222222222', 500))
 console.log(deposit('222222222', 1000))
 console.log(transfer('987654321', '222222222', 150))
 //console.log(getAccount('333333333'))
