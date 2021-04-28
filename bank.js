@@ -35,7 +35,6 @@ let getAccount = function (accountNumb) {
         }
         counter = counter + 1
     }
-    return 'Account number not found'
 };
 
 let printstatement = function (accountNumb) {
@@ -51,45 +50,56 @@ let printstatement = function (accountNumb) {
 
 let withdraw = function (accountNumb, amount) {
     let account = getAccount(accountNumb)
-    if (account && amount > 0 && amount <= account.balance) {
+    if (account == undefined) {
+        return 'the account number does not exist'
+    }
+    if (amount < 0 && account.balance != amount || account.balance < amount) { return 'insufficient funds' }
+    else {
         account.balance = account.balance - amount;
         account.transactions.push({ type: 'withdrawal', amount: amount * - 1 });
         return 'successful'
     }
-    return 'insufficient amount'
 };
 let deposit = function (accountNumb, amount) {
     let account = getAccount(accountNumb)
-    if (account && amount > 0) {
+    if (account == undefined) {
+        return 'the account number does not exist'
+    }
+    if (amount < 0) { return 'insufficient funds' }
+    else {
         account.balance = account.balance + amount;
         account.transactions.push({ type: 'deposit', amount });
         return 'successful'
     }
-    return 'insufficient amount'
 };
 let transfer = function (fromAccount, toAccount, amount) {
     let primeAccount = getAccount(fromAccount)
     let secAccount = getAccount(toAccount)
-    if (primeAccount && secAccount && amount < primeAccount.balance) {
+    if (primeAccount == undefined) {
+        return 'account number_' + fromAccount + '_is incorrect'
+    }
+    if (secAccount == undefined) {
+        return 'account number_' + toAccount + '_is incorrect'
+    }
+    if (amount < 0 && primeAccount.balance != amount || primeAccount.balance < amount) { return 'insufficient funds' }
+    else {
         primeAccount.balance = primeAccount.balance - amount,
             secAccount.balance = secAccount.balance + amount;
         primeAccount.transactions.push({ type: 'transfer', amount: amount * -1 });
         secAccount.transactions.push({ type: 'transfer', amount });
         return 'successful'
     }
-    return 'insuficient amount'
 };
 
 //CLIENT
 
 //console.log(withdraw('333333333', 10))
-console.log(withdraw('222222222', 500))
-console.log(deposit('222222222', 1000))
-console.log(transfer('987654321', '222222222', 150))
+console.log(withdraw('222222222', 1000))
+//console.log(deposit('2222222220', -900))
+console.log(transfer('987654321', '222222222', 1050))
 //console.log(getAccount('333333333'))
 //console.log(getAccount('222222222'))
 printstatement('222222222')
-printstatement('333333333')
-printstatement('987654321')
- 
+//printstatement('333333333')
+//printstatement('987654321')
 debugger 
