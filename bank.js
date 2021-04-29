@@ -91,7 +91,7 @@ let transfer = function (fromAccount, toAccount, amount) {
     }
 };
 
-module.exports = { withdraw, deposit, transfer };
+module.exports = { withdraw, deposit, transfer, getAccount };
 
 //CLIENT
 
