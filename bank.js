@@ -91,6 +91,8 @@ let transfer = function (fromAccount, toAccount, amount) {
     }
 };
 
+module.exports = { withdraw, deposit, transfer };
+
 //CLIENT
 
 //console.log(withdraw('333333333', 10))

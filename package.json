@@ -1,0 +1,24 @@
+{
+  "name": "bank_of_tomorrow",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bank.js",
+  "scripts": {
+    "start": "node bank.js",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Athenkosi19/Bank_of_tomorrow.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Athenkosi19/Bank_of_tomorrow/issues"
+  },
+  "homepage": "https://github.com/Athenkosi19/Bank_of_tomorrow#readme",
+  "devDependencies": {
+    "jest": "^26.6.3"
+  }
+}
