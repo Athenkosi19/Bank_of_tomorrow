@@ -25,7 +25,7 @@ describe("Withdraw", () => {
 
   it("should not allow withdrawals of amount < 0", () => {
     const result = withdraw(accountNumber, -10000);
-    expect(result).not.toBe("successful");
+    expect(result).toBe("cannot withdraw an amount smaller or equal to zero");
   });
 
   it("should return insufficient funds if amount > balance", () => {
@@ -73,8 +73,7 @@ describe("Deposit", () => {
 
   it("should not allow a deposit of less than 0", () => {
     const result = deposit(accountNumber, -1000000);
-    // TODO: fix message so it is meaningful
-    expect(result).toBe("insufficient funds");
+    expect(result).toBe("cannot deposit an amount smaller or equal to zero");
   });
 
   it("should return success if amount > 0", () => {
@@ -121,7 +120,7 @@ describe("Transfer", () => {
 
   it("should not allow transfers of amount < 0", () => {
     const result = transfer(fromAccountNumber, toAccountNumber, -1000000);
-    expect(result).not.toBe("successful");
+    expect(result).toBe("cannot transfer an amount smaller or equal to zero");
   });
 
   it("should alert on invalid from account", () => {
