@@ -53,7 +53,8 @@ let withdraw = function (accountNumb, amount) {
     if (account == undefined) {
         return 'the account number does not exist'
     }
-    if (amount < 0 && account.balance != amount || account.balance < amount) { return 'insufficient funds' }
+    if (amount <= 0) { return 'cannot withdraw an amount smaller or equal to zero' }
+    if (amount > account.balance) {return 'insufficient funds'}
     else {
         account.balance = account.balance - amount;
         account.transactions.push({ type: 'withdrawal', amount: amount * - 1 });
@@ -65,7 +66,7 @@ let deposit = function (accountNumb, amount) {
     if (account == undefined) {
         return 'the account number does not exist'
     }
-    if (amount < 0) { return 'insufficient funds' }
+    if (amount <= 0) { return 'cannot deposit an amount smaller or equal to zero' }
     else {
         account.balance = account.balance + amount;
         account.transactions.push({ type: 'deposit', amount });
@@ -81,7 +82,8 @@ let transfer = function (fromAccount, toAccount, amount) {
     if (secAccount == undefined) {
         return 'account number_' + toAccount + '_is incorrect'
     }
-    if (amount < 0 && primeAccount.balance != amount || primeAccount.balance < amount) { return 'insufficient funds' }
+    if (amount <= 0) { return 'cannot transfer an amount smaller or equal to zero' }
+    if(primeAccount.balance < amount){return 'insufficient funds'}
     else {
         primeAccount.balance = primeAccount.balance - amount,
             secAccount.balance = secAccount.balance + amount;
