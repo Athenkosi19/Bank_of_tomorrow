@@ -55,11 +55,9 @@ let withdraw = function (accountNumb, amount) {
     }
     if (amount <= 0) { return 'cannot withdraw an amount smaller or equal to zero' }
     if (amount > account.balance) {return 'insufficient funds'}
-    else {
         account.balance = account.balance - amount;
         account.transactions.push({ type: 'withdrawal', amount: amount * - 1 });
         return 'successful'
-    }
 };
 let deposit = function (accountNumb, amount) {
     let account = getAccount(accountNumb)
@@ -67,11 +65,9 @@ let deposit = function (accountNumb, amount) {
         return 'the account number does not exist'
     }
     if (amount <= 0) { return 'cannot deposit an amount smaller or equal to zero' }
-    else {
         account.balance = account.balance + amount;
         account.transactions.push({ type: 'deposit', amount });
         return 'successful'
-    }
 };
 let transfer = function (fromAccount, toAccount, amount) {
     let primeAccount = getAccount(fromAccount)
@@ -84,13 +80,11 @@ let transfer = function (fromAccount, toAccount, amount) {
     }
     if (amount <= 0) { return 'cannot transfer an amount smaller or equal to zero' }
     if(primeAccount.balance < amount){return 'insufficient funds'}
-    else {
         primeAccount.balance = primeAccount.balance - amount,
             secAccount.balance = secAccount.balance + amount;
         primeAccount.transactions.push({ type: 'transfer', amount: amount * -1 });
         secAccount.transactions.push({ type: 'transfer', amount });
         return 'successful'
-    }
 };
 
 module.exports = { withdraw, deposit, transfer, getAccount };
