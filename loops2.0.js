@@ -58,6 +58,18 @@ let reverse = function(srebmun){
    return list
 };
 
+let prime = function(primenumb){
+  let list = []
+ while(primenumb < 20){
+    if(primenumb % 2 == 1){
+      if (primenumb != 1){
+      list.push(primenumb)
+    }}
+    primenumb = primenumb + 1
+  }
+ return list 
+};
+
 debugger
 
-console.log(reverse([1,2,3,4,5]))
+console.log(prime(1))
