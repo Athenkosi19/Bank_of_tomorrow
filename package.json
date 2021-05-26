@@ -4,7 +4,7 @@
   "description": "",
   "main": "bank.js",
   "scripts": {
-    "start": "node bank.js",
+    "start": "node python.py",
     "test": "jest",
     "test:watch": "jest --watch"
   },
